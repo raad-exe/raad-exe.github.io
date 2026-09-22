@@ -1,170 +1,998 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#07080b">
-<meta name="description" content="RAAD EXE — Gaming, développement web et création digitale.">
-<title>RAAD EXE — Gaming • Development • Creation</title>
-<link rel="icon" type="image/png" href="https://i.imgur.com/uutlsa8.png">
-<link rel="apple-touch-icon" href="https://i.imgur.com/uutlsa8.png">
-<meta property="og:image" content="https://i.imgur.com/uutlsa8.png">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
-:root{--bg:#07080b;--panel:#0d1016;--text:#f5f7fb;--muted:#9ba3b2;--line:#202733;--accent:#b7ff2a;--cyan:#68d8ff;--max:1180px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 75% 5%,#152018 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;overflow-x:hidden}.noise{position:fixed;inset:0;pointer-events:none;opacity:.035;z-index:50;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}.orb{position:fixed;width:420px;height:420px;border-radius:50%;filter:blur(110px);opacity:.08;pointer-events:none}.orb.a{background:var(--accent);right:-200px;top:30%}.orb.b{background:var(--cyan);left:-250px;bottom:5%}
-.nav{position:sticky;top:0;z-index:20;height:74px;padding:0 max(18px,calc((100% - var(--max))/2));display:flex;align-items:center;gap:28px;background:rgba(7,8,11,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:700 18px "Space Grotesk"}.brand b{color:var(--accent)}.mark{width:32px;height:32px;display:grid;place-items:center;border:1px solid #52621e;background:#12190e;color:var(--accent);transform:skew(-8deg)}.links{display:flex;gap:22px;margin-left:auto}.links button{background:none;border:0;color:var(--muted);font-size:12px;font-weight:700;cursor:pointer}.links button:hover,.links button.active{color:#fff}.cta{padding:11px 14px;background:var(--accent);color:#080b07;text-decoration:none;border-radius:6px;font-size:11px;font-weight:800}.menu{display:none;background:none;border:0;color:white;font-size:24px;margin-left:auto}
-.page{display:none;animation:pageIn .45s ease}.page.active{display:block}.section{width:min(var(--max),calc(100% - 34px));margin:auto;padding:92px 0}.hero{min-height:calc(100vh - 74px);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:45px;padding-top:60px}.eyebrow{display:flex;align-items:center;gap:9px;color:#cbd2dc;font-size:10px;font-weight:800;letter-spacing:.18em}.eyebrow i{width:25px;height:1px;background:var(--accent);box-shadow:0 0 12px var(--accent)}h1,h2,h3{font-family:"Space Grotesk";margin:0}h1{font-size:clamp(58px,8vw,110px);line-height:.84;letter-spacing:-.07em;margin:24px 0 30px}h1 em,h2 em{font-style:normal;color:var(--accent)}p{line-height:1.7}.hero p{max-width:620px;color:var(--muted);font-size:16px}.actions{display:flex;gap:10px;margin:30px 0}.btn{display:inline-flex;justify-content:center;align-items:center;padding:14px 18px;border-radius:6px;font-size:12px;font-weight:800;text-decoration:none;cursor:pointer;border:0}.primary{background:var(--accent);color:#080b07}.ghost{background:#0b0e13;border:1px solid var(--line);color:#fff}.stats{display:flex;gap:25px;color:#697382;font-size:9px;letter-spacing:.12em}.stats b{color:#fff}
-.visual{height:510px;position:relative;display:grid;place-items:center}.profile-photo{position:absolute;inset:0;width:100%;height:100%;border-radius:0;object-fit:cover;object-position:center;z-index:1;border:0}.hud{width:min(400px,82%);height:470px;border:1px solid #2b3440;background:linear-gradient(145deg,#121720,#080a0e);box-shadow:0 35px 90px #000;position:relative;transform:perspective(1000px) rotateY(-8deg)}.hud:before{content:"";position:absolute;inset:14px;border:1px solid #202833;z-index:3}.hud:after{content:"";z-index:3;position:absolute;top:0;left:0;width:100%;height:2px;background:var(--accent);box-shadow:0 0 20px var(--accent);animation:scan 4s linear infinite}.hudtop,.hudbottom{z-index:3;text-shadow:0 1px 6px #000;position:absolute;left:28px;right:28px;display:flex;justify-content:space-between;font:700 9px monospace;letter-spacing:.13em;color:#778292}.hudtop{top:28px}.hudbottom{bottom:28px}.live{width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 15px var(--accent)}.cross{z-index:3;position:absolute;inset:0;display:grid;place-items:center;color:var(--accent);font-size:55px;text-shadow:0 0 25px #b7ff2a55}.chip{position:absolute;background:#10151b;border:1px solid #2c3542;padding:10px 13px;font-size:9px;font-weight:800;letter-spacing:.1em;box-shadow:0 15px 40px #000}.chip.one{right:0;top:16%}.chip.two{left:2%;bottom:18%;color:var(--accent)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.card{padding:34px 25px;border-right:1px solid var(--line)}.card:last-child{border:0}.num{font:700 10px monospace;color:var(--accent)}.card h3{font-size:23px;margin:20px 0 10px}.card p,.guide p,.project p,.about p{font-size:13px;color:var(--muted)}.card button,.link{background:none;border:0;color:#fff;text-decoration:none;font-size:11px;font-weight:800;cursor:pointer;padding:0}
-.head{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:35px}.head h2{font-size:clamp(43px,6vw,70px);line-height:.9;letter-spacing:-.06em;margin-top:15px}.head>p{max-width:350px;color:var(--muted);font-size:12px}
-.panel{background:linear-gradient(145deg,#0f131a,#0b0e13);border:1px solid var(--line);border-radius:10px}.lab{display:grid;grid-template-columns:.85fr 1.15fr;gap:14px}.form,.result,.quiz{padding:25px}.form label{display:block;color:#c8d0da;font-size:11px;font-weight:700;margin-bottom:17px}.form select,.form input[type=number]{width:100%;margin-top:8px;background:#090b10;color:#fff;border:1px solid #252d38;padding:12px;border-radius:5px;outline:none}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hint{font-size:9px!important;color:#6d7786!important}.full{width:100%;margin-top:4px}.result{position:relative;overflow:hidden}.result:before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:-150px;top:-160px;background:#b7ff2a10;filter:blur(30px)}.resulthead,.sens,.meta,.copy,.message{position:relative}.resulthead{display:flex;justify-content:space-between;font:700 9px monospace;color:#8490a0;letter-spacing:.13em;margin-bottom:22px}.ready{color:var(--accent)}.sens{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.box{background:#0a0d12;border:1px solid #202733;padding:15px}.box span{display:block;color:#6f7a8a;font-size:8px;text-transform:uppercase}.box strong{font:700 34px "Space Grotesk"}.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}.meta div{background:#0a0d12;border:1px solid #202733;padding:12px}.meta span{display:block;color:#6f7a8a;font-size:8px}.meta strong{font-size:13px}.copy{width:100%;background:transparent;border:1px solid #303947;color:#fff;border-radius:5px;padding:12px;font-weight:700;cursor:pointer}.message{text-align:center;color:var(--accent);font-size:9px;min-height:15px;margin-top:8px}
-.guidegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.guide{padding:23px;border:1px solid var(--line);background:#0b0e13;min-height:210px}.icon{width:38px;height:38px;color:var(--accent)}.guide h3{margin:28px 0 8px;font-size:19px}.quiz{max-width:900px;margin:auto}.qtop{display:flex;gap:14px;align-items:center;font-size:10px;color:#788494}.progress{height:3px;background:#1b212a;flex:1}.progress i{display:block;height:100%;width:10%;background:var(--accent);transition:.3s}.qtop strong{color:var(--accent)}.quiz h3{font-size:27px;margin:35px 0 22px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px}.answer{padding:14px;background:#0a0d12;border:1px solid #252d38;color:white;text-align:left;border-radius:5px;cursor:pointer}.answer.correct{border-color:var(--accent);color:var(--accent)}.answer.wrong{border-color:#ff7070;color:#ff9292}
-.projects{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:9px}.project{min-height:245px;padding:28px;border:1px solid var(--line);background:#0b0e13;display:flex;flex-direction:column}.project.main{border-color:#2d3e20;background:linear-gradient(145deg,#121a10,#0b0e13)}.project h3{font-size:27px;margin:32px 0 8px}.project small{margin-top:auto;color:var(--accent);font:700 9px monospace}.aboutcard{padding:52px;border:1px solid var(--line);background:radial-gradient(circle at 80% 0,#192016,transparent 45%),#0b0e13}.about-top{display:flex;align-items:center;gap:28px}.about-photo{width:115px;height:115px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}.aboutcard h2{font-size:clamp(43px,7vw,78px);margin:16px 0 4px;letter-spacing:-.06em}.lead{color:#fff!important;font-size:15px!important}.identity{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;border-top:1px solid var(--line);margin-top:32px;padding-top:24px}.identity span{display:block;color:#687382;font-size:8px;margin-bottom:8px}.identity strong{font-size:11px}.social{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.social a{padding:20px;background:#0b0e13;border:1px solid var(--line);color:#fff;text-decoration:none;font-size:11px;transition:.25s}.social a:hover{transform:translateY(-4px);border-color:#586473}.social b{display:block;color:var(--accent);margin-top:12px}footer{border-top:1px solid var(--line);padding:34px max(18px,calc((100% - var(--max))/2));display:flex;gap:25px;align-items:center;color:#687382;font-size:9px}footer span{margin-left:auto}
-.reveal{opacity:0;transform:translateY(22px);transition:.7s}.reveal.show{opacity:1;transform:none}@keyframes scan{0%{top:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media(max-width:850px){.links,.cta{display:none}.menu{display:block}.nav.open .links{display:flex;position:absolute;top:65px;left:12px;right:12px;flex-direction:column;background:#0c0f14;border:1px solid var(--line);padding:17px;border-radius:8px}.hero{grid-template-columns:1fr}.visual{height:410px}.cards,.guidegrid{grid-template-columns:1fr 1fr}.lab{grid-template-columns:1fr}.projects{grid-template-columns:1fr 1fr}.social{grid-template-columns:1fr 1fr}.identity{grid-template-columns:1fr 1fr}.head{display:block}.head>p{margin-top:18px}}
-@media(max-width:520px){.section{padding:70px 0;width:calc(100% - 26px)}h1{font-size:61px}.visual{height:350px}.hud{height:330px}.cards,.guidegrid,.projects,.social,.answers{grid-template-columns:1fr}.card{border-right:0;border-bottom:1px solid var(--line)}.aboutcard{padding:28px 21px}.about-top{align-items:flex-start}.about-photo{width:85px;height:85px}.identity{grid-template-columns:1fr}.row{grid-template-columns:1fr}.meta{grid-template-columns:1fr 1fr}.meta div:last-child{grid-column:1/-1}.actions{flex-direction:column}.btn{width:100%}footer{display:block}footer span{display:block;margin:12px 0 0}}
-.logo{display:block;height:40px;width:auto;max-width:130px;object-fit:contain;flex:none}footer .logo{height:32px}.ar{width:1.05em;height:1.05em;vertical-align:-.16em;margin-left:.4em;flex:none}.flag{display:inline-block;vertical-align:-2px;margin-left:8px;border-radius:2px}.menu svg{display:block}.cross svg{width:1em;height:1em}.message .ar{margin-left:.3em}.btn .ar{margin-left:.5em}@media(max-width:520px){.logo{height:36px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fef9f3">
+  <meta name="description" content="RAAD EXE — Développeur et créateur. Web, gaming, création numérique.">
+  <meta name="author" content="RAAD EXE">
+  <meta property="og:title" content="RAAD EXE — Portfolio">
+  <meta property="og:description" content="Développeur et créateur. Basé au Mali.">
+  <meta property="og:image" content="https://i.imgur.com/uutlsa8.png">
+  <link rel="icon" href="https://i.imgur.com/uutlsa8.png">
+  <title>RAAD EXE — Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-light: #fef9f3;
+      --bg-dark: #1a1410;
+      --text-dark: #2c2520;
+      --text-light: #6b6360;
+      
+      /* Palette de bleus */
+      --accent-warm: #3b82f6;      
+      --accent-gold: #60a5fa;      
+      --accent-green: #2563eb;     
+      
+      --border: #e8dcc8;
+      --transition: 0.4s cubic-bezier(0.2, 0.6, 0.3, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lora', serif;
+      background: linear-gradient(135deg, var(--bg-light) 0%, #f5f1e8) 100%;
+      color: var(--text-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    button, input, select { font: inherit; }
+    button { border: 0; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--accent-warm); color: white; }
+
+    /* Navigation */
+    .nav-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(254, 249, 243, 0.92);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--accent-warm);
+      box-shadow: 0 4px 16px rgba(59, 130, 246, 0.12);
+    }
+
+    .nav-logo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links button {
+      background: none;
+      cursor: pointer;
+      font: inherit;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .nav-links button::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-warm);
+      transition: var(--transition);
+    }
+
+    .nav-links button:hover::after {
+      width: 100%;
+    }
+
+    .nav-links button.active {
+      color: var(--accent-warm);
+    }
+
+    .nav-links button.active::after {
+      width: 100%;
+    }
+
+    /* Main */
+    main {
+      margin-top: 80px;
+      min-height: 100vh;
+    }
+
+    .page {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Section */
+    .section {
+      padding: 80px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-intro {
+      max-width: 700px;
+      margin-bottom: 80px;
+    }
+
+    .section-tag {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-warm);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--text-dark) 0%, var(--accent-warm) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-description {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      max-width: 650px;
+    }
+
+    /* Hero */
+    .hero-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      padding: 100px 60px;
+    }
+
+    .hero-content h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 28px;
+      color: var(--text-dark);
+    }
+
+    .hero-content p {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+
+    .hero-content p strong {
+      color: var(--accent-warm);
+      font-weight: 600;
+    }
+
+    .hero-visual {
+      position: relative;
+      height: 400px;
+    }
+
+    .hero-shape {
+      position: absolute;
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      background: linear-gradient(135deg, var(--accent-warm) 0%, var(--accent-gold) 100%);
+      width: 100%;
+      height: 100%;
+      opacity: 0.85;
+      animation: morphing 8s ease-in-out infinite;
+    }
+
+    @keyframes morphing {
+      0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+      50% { border-radius: 30% 70% 50% 50% / 60% 30% 70% 40%; }
+    }
+
+    /* Intégration de la photo dans le visuel hero */
+    .hero-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 80%;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+      z-index: 10;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-top: 60px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-warm), var(--accent-gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent-warm);
+      box-shadow: 0 20px 50px rgba(59, 130, 246, 0.12);
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(96, 165, 250, 0.15));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+
+    .card:hover .card-icon {
+      background: linear-gradient(135deg, var(--accent-warm), var(--accent-gold));
+    }
+
+    .card-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--accent-warm);
+      transition: var(--transition);
+    }
+
+    .card:hover .card-icon svg {
+      stroke: white;
+    }
+
+    .card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+
+    .card p {
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* Buttons */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 2px solid;
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: none;
+    }
+
+    .button.primary {
+      background: var(--accent-warm);
+      color: white;
+      border-color: var(--accent-warm);
+    }
+
+    .button.primary:hover {
+      background: transparent;
+      color: var(--accent-warm);
+      transform: translateY(-2px);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--text-dark);
+      border-color: var(--text-dark);
+    }
+
+    .button.secondary:hover {
+      background: var(--text-dark);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* FF Sensi */
+    .form-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--accent-warm);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 8' fill='none' stroke='%233b82f6' stroke-width='2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 40px;
+    }
+
+    .phone-results {
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+      margin-top: 8px;
+    }
+
+    .phone-result {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .phone-result:last-child { border-bottom: 0; }
+    .phone-result:hover { background: rgba(59, 130, 246, 0.06); }
+    .phone-name { font-weight: 600; color: var(--text-dark); }
+    .phone-info { font-size: 0.8rem; color: var(--text-light); margin-top: 3px; }
+
+    /* Result Section at bottom */
+    .results-wrapper {
+      margin-top: 20px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .result {
+      text-align: center;
+      padding: 20px 16px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(96, 165, 250, 0.08));
+      border-radius: 14px;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .result-label {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-bottom: 8px;
+      text-transform: capitalize;
+    }
+
+    .result-value {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent-warm);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--text-dark);
+      color: var(--bg-light);
+      padding: 60px;
+      text-align: center;
+      margin-top: 120px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer p {
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .social-link {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--accent-warm);
+    }
+
+    .social-link svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-wrapper { padding: 14px 16px; }
+      .nav-links { display: none; }
+      .section { padding: 60px 20px; }
+      .hero-section { grid-template-columns: 1fr; gap: 40px; padding: 60px 20px; }
+      .hero-visual { height: 300px; }
+      .results { grid-template-columns: repeat(2, 1fr); }
+      .footer { padding: 40px 20px; }
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--accent-warm);
+      color: white;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      z-index: 200;
+      transform: translateY(120px);
+      opacity: 0;
+      transition: var(--transition);
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
 </head>
+
 <body>
-<div class="noise"></div><div class="orb a"></div><div class="orb b"></div>
 
-<header class="nav">
-<a class="brand" href="#home" data-page="home"><img class="logo" referrerpolicy="no-referrer" src="https://i.imgur.com/uutlsa8.png" alt="RAAD EXE" width="40" height="40">RAAD <b>EXE</b></a>
-<button class="menu" aria-label="Menu"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-<nav class="links">
-<button data-page="home">Accueil</button>
-<button data-page="aimlab">AIM LAB</button>
-<button data-page="guides">Guides</button>
-<button data-page="quiz">Quiz</button>
-<button data-page="projects">Projets</button>
-<button data-page="about">À propos</button>
-<button data-page="social">Réseaux</button>
-</nav>
-<a class="cta" href="#aimlab" data-page="aimlab">LANCER AIM LAB<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-</header>
+  <nav class="nav-wrapper">
+    <div class="nav-brand">
+      <div class="nav-logo">
+        <img src="https://i.imgur.com/uutlsa8.png" alt="RAAD EXE">
+      </div>
+      <span>RAAD EXE</span>
+    </div>
+    <ul class="nav-links">
+      <li><button class="nav-btn active" data-page="accueil">Accueil</button></li>
+      <li><button class="nav-btn" data-page="ffsensi">FF Sensi</button></li>
+      <li><button class="nav-btn" data-page="projets">Projets</button></li>
+      <li><button class="nav-btn" data-page="apropos">À propos</button></li>
+    </ul>
+  </nav>
 
-<!-- ACCUEIL -->
-<main id="home" class="page active">
-<section class="section hero">
-<div class="reveal"><div class="eyebrow"><i></i> GAMING • DEVELOPMENT • CREATION</div>
-<h1>Créer.<br><em>Maîtriser.</em><br>Évoluer.</h1>
-<p>Bienvenue chez <strong>RAAD EXE</strong> — une plateforme dédiée au gaming, aux outils web et à la création numérique.</p>
-<div class="actions"><button class="btn primary" data-page="aimlab">Ouvrir AIM LAB</button><button class="btn ghost" data-page="about">Découvrir RAAD EXE</button></div>
-<div class="stats"><span><b>01</b> AIM LAB</span><span><b>02</b> GUIDES</span><span><b>03</b> PROJETS</span></div></div>
-<div class="visual reveal"><div class="hud"><div class="hudtop"><span>RAAD.EXE // ONLINE</span><span class="live"></span></div><img class="profile-photo" referrerpolicy="no-referrer" src="https://i.imgur.com/uutlsa8.png" alt="RAAD EXE"><div class="cross"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg></div><div class="hudbottom"><span>PRECISION</span><strong>MAX</strong></div></div><div class="chip one">PERFORMANCE</div><div class="chip two">AIM LAB</div></div>
-</section>
-<section class="section cards">
-<article class="card reveal"><span class="num">01</span><h3>AIM LAB</h3><p>Construis une base de sensibilité adaptée à ton appareil et à ton style.</p><button data-page="aimlab">Configurer<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
-<article class="card reveal"><span class="num">02</span><h3>GUIDES</h3><p>Des conseils simples sur la sensibilité, le HUD, le DPI et la régularité.</p><button data-page="guides">Explorer<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
-<article class="card reveal"><span class="num">03</span><h3>CRÉATION</h3><p>Des projets web propres, rapides et évolutifs autour du gaming et du numérique.</p><button data-page="projects">Voir les projets<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
-</section>
-</main>
+  <main>
 
-<!-- AIM LAB -->
-<section id="aimlab" class="page">
-<section class="section">
-<div class="head reveal"><div><div class="eyebrow"><i></i> RAAD AIM LAB</div><h2>Ta configuration.<br><em>Ton style.</em></h2></div><p>Tout est séparé dans son propre espace. DPI et bouton de tir utilisent des champs numériques, sans barres.</p></div>
-<div class="lab">
-<form class="panel form reveal" id="aimForm">
-<label>Marque / appareil<select id="phone"><option value="mid">Android polyvalent</option><option value="redmi">Redmi / Xiaomi</option><option value="samsung">Samsung</option><option value="infinix">Infinix / Tecno</option><option value="iphone">iPhone</option><option value="high">Android haut de gamme</option></select></label>
-<label>RAM<select id="ram"><option value="3">3–4 Go</option><option value="6">6 Go</option><option value="8">8 Go</option><option value="12">12 Go+</option></select></label>
-<label>Fréquence écran<select id="hz"><option value="60">60 Hz</option><option value="90">90 Hz</option><option value="120">120 Hz</option><option value="144">144 Hz+</option></select></label>
-<label>Style de jeu<select id="style"><option value="rush">Rusher / Drag Shot</option><option value="balanced">Polyvalent</option><option value="precision">Précision</option><option value="sniper">Sniper</option></select></label>
-<div class="row"><label>DPI<input id="dpi" type="number" min="200" max="1000" value="480" inputmode="numeric"></label><label>Bouton de tir (%)<input id="fire" type="number" min="20" max="100" value="52" inputmode="numeric"></label></div>
-<button class="btn primary full" type="submit">Générer ma sensibilité</button><p class="hint">Les valeurs sont une base de départ à tester et ajuster selon tes sensations.</p>
-</form>
-<div class="panel result reveal"><div class="resulthead"><span>RAAD AIM PROFILE</span><span class="ready" id="tag">READY</span></div><div class="sens" id="sens"></div><div class="meta"><div><span>DPI</span><strong id="outDpi">480</strong></div><div><span>BOUTON</span><strong id="outFire">52%</strong></div><div><span>STYLE</span><strong id="outStyle">RUSH</strong></div></div><button class="copy" id="copy">Copier la configuration</button><div class="message" id="message"></div></div>
-</div>
-</section>
-</section>
+    <!-- ACCUEIL -->
+    <section class="page active" id="page-accueil">
+      <div class="hero-section">
+        <div class="hero-content">
+          <h1>Créateur & Développeur</h1>
+          <p>
+            Je crée des <strong>sites web</strong>, des <strong>applications</strong> et des <strong>outils</strong> pour la communauté gaming.
+          </p>
+          <p style="color: var(--text-light); font-size: 0.95rem;">
+            Basé au Mali. Actuellement en phase de construction — chaque projet est une opportunité d'apprendre et d'évoluer.
+          </p>
+          <div style="display: flex; gap: 16px; margin-top: 32px;">
+            <button class="button primary" data-page="ffsensi">Voir FF Sensi</button>
+            <button class="button secondary" data-page="projets">Explorer</button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-shape"></div>
+          <div class="hero-image">
+            <img src="https://i.imgur.com/uutlsa8.png" alt="RAAD EXE">
+          </div>
+        </div>
+      </div>
 
-<!-- GUIDES -->
-<section id="guides" class="page"><section class="section">
-<div class="head reveal"><div><div class="eyebrow"><i></i> KNOWLEDGE</div><h2>Guides <em>essentiels</em></h2></div><p>Une section dédiée uniquement aux connaissances et conseils.</p></div>
-<div class="guidegrid">
-<article class="guide reveal"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg><h3>Sensibilité</h3><p>Commence avec une base cohérente puis ajuste progressivement les valeurs.</p></article>
-<article class="guide reveal"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M10 18h4"/></svg><h3>Écran & fluidité</h3><p>La fréquence d'affichage et la stabilité du téléphone changent les sensations de contrôle.</p></article>
-<article class="guide reveal"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg><h3>DPI & HUD</h3><p>Choisis une disposition confortable et évite de modifier trop de paramètres à la fois.</p></article>
-<article class="guide reveal"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l2.4 5.5L20 11l-5.6 2.5L12 19l-2.4-5.5L4 11l5.6-2.5L12 3z"/></svg><h3>Régularité</h3><p>Évalue une configuration sur plusieurs sessions plutôt qu'une seule partie.</p></article>
-</div></section></section>
+      <section class="section">
+        <div class="section-intro">
+          <span class="section-tag">Approche</span>
+          <h2 class="section-title">Apprendre. Construire. Évoluer.</h2>
+          <p class="section-description">
+            Chaque projet m'enseigne quelque chose de nouveau. Je privilégie la qualité, l'attention aux détails et l'expérience utilisateur.
+          </p>
+        </div>
 
-<!-- QUIZ -->
-<section id="quiz" class="page"><section class="section">
-<div class="head reveal"><div><div class="eyebrow"><i></i> TEST YOUR SKILL</div><h2>Quiz <em>Gaming</em></h2></div><p>Un espace séparé pour tester tes connaissances.</p></div>
-<div class="panel quiz reveal"><div class="qtop"><span id="qcount">Question 1 / 10</span><div class="progress"><i id="prog"></i></div><strong id="score">0 pts</strong></div><h3 id="question">Prêt à commencer ?</h3><div class="answers" id="answers"></div><button class="btn primary" id="start">Lancer le quiz</button><p class="hint" id="quizmsg"></p></div>
-</section></section>
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+                <path d="M4 12h16M12 4v16"/>
+              </svg>
+            </div>
+            <h3>Design Web</h3>
+            <p>Je crée des interfaces qui sont à la fois belles et fonctionnelles, avec une attention particulière à l'expérience utilisateur.</p>
+          </article>
 
-<!-- PROJETS -->
-<section id="projects" class="page"><section class="section">
-<div class="head reveal"><div><div class="eyebrow"><i></i> WORKSPACE</div><h2>Les projets <em>RAAD EXE</em></h2></div><p>Un espace distinct pour présenter les créations actuelles et futures.</p></div>
-<div class="projects">
-<article class="project main reveal"><span class="num">01</span><h3>RAAD AIM LAB</h3><p>Générateur de configuration et espace de conseils pour les joueurs Free Fire.</p><small>ACTIVE / V1</small></article>
-<article class="project reveal"><span class="num">02</span><h3>WEB LAB</h3><p>Expérimentations, interfaces et outils web.</p><small>IN PROGRESS</small></article>
-<article class="project reveal"><span class="num">03</span><h3>GAME PROJECT</h3><p>Une ambition à long terme : créer une expérience de jeu.</p><small>FUTURE</small></article>
-</div></section></section>
+          <article class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                <path d="M13 2v7h7"/>
+              </svg>
+            </div>
+            <h3>Développement</h3>
+            <p>Du frontend au backend, je maîtrise les technologies modernes pour construire des applications robustes et évolutives.</p>
+          </article>
 
-<!-- À PROPOS -->
-<section id="about" class="page"><section class="section">
-<div class="aboutcard reveal">
-<div class="about-top"><img class="about-photo" referrerpolicy="no-referrer" src="https://i.imgur.com/uutlsa8.png" alt="Abdoul Karim M. — RAAD EXE"><div><div class="eyebrow"><i></i> RAAD EXE / PROFILE</div><h2>Abdoul Karim M.</h2><p class="lead">Créateur gaming • Développeur web • Créateur digital</p></div></div>
-<p>Je suis un créateur malien passionné par le gaming, le développement web et la création numérique. À travers <strong>RAAD EXE</strong>, je développe des outils, des expériences interactives et des contenus pensés pour la communauté.</p>
-<p>Mon objectif est de progresser constamment, d'expérimenter de nouvelles idées et de transformer progressivement mes projets en créations plus ambitieuses.</p>
-<div class="identity"><div><span>PAYS</span><strong>Mali<svg class="flag" viewBox="0 0 3 2" width="22" height="15" role="img" aria-label="Mali"><rect width="1" height="2" fill="#14b53a"/><rect x="1" width="1" height="2" fill="#fcd116"/><rect x="2" width="1" height="2" fill="#ce1126"/></svg></strong></div><div><span>COMMUNAUTÉ</span><strong>Leader Rusher · Clan SAHARA</strong></div><div><span>PHILOSOPHIE</span><strong>Science · Discipline · Créativité</strong></div><div><span>AMBITION</span><strong>Créer mon propre jeu vidéo</strong></div></div>
-</div>
+          <article class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="1"/>
+                <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24"/>
+              </svg>
+            </div>
+            <h3>Gaming & Tools</h3>
+            <p>Création d'outils spécialisés pour la communauté gaming, comme FF Sensi pour les joueurs de Free Fire.</p>
+          </article>
+        </div>
+      </section>
+    </section>
 
-</section></section>
+    <!-- FF SENSI -->
+    <section class="page" id="page-ffsensi">
+      <section class="section">
+        <div class="section-intro">
+          <span class="section-tag">Outil Interactif</span>
+          <h2 class="section-title">FF Sensi</h2>
+          <p class="section-description">
+            Trouvez la sensibilité idéale pour Free Fire selon votre téléphone et votre style de jeu.
+          </p>
+        </div>
 
-<!-- RÉSEAUX -->
-<section id="social" class="page"><section class="section">
-<div class="head reveal"><div><div class="eyebrow"><i></i> CONNECT</div><h2>Rejoins <em>RAAD EXE</em></h2></div><p>Tous tes réseaux dans un espace dédié.</p></div>
-<div class="social reveal">
-<a href="https://www.tiktok.com/@raad_exe" target="_blank">TikTok<b>@raad_exe<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></b></a><a href="https://www.youtube.com/@raad_exe" target="_blank">YouTube<b>@raad_exe<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></b></a><a href="https://www.instagram.com/raad__exe/" target="_blank">Instagram<b>@raad__exe<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></b></a><a href="https://www.facebook.com/raadexee" target="_blank">Facebook<b>raadexee<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></b></a><a href="https://wa.me/22398083432" target="_blank">WhatsApp<b>+223 98 08 34 32<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></b></a>
-</div>
-</section></section>
+        <div class="form-wrapper">
+          <!-- Formulaire pleine largeur -->
+          <div class="card" style="width: 100%;">
+            <h3 style="margin-bottom: 24px;">Configuration</h3>
 
-<footer><div class="brand"><img class="logo" referrerpolicy="no-referrer" src="https://i.imgur.com/uutlsa8.png" alt="RAAD EXE" width="32" height="32">RAAD <b>EXE</b></div><span>Construire. Maîtriser. Évoluer. — © 2026 RAAD EXE </span></footer>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">Votre téléphone</label>
+                <input id="phoneSearch" type="text" placeholder="Ex. Galaxy A16, iPhone 15..." autocomplete="off">
+                <div class="phone-results" id="phoneResults"></div>
+              </div>
 
-<script>
-const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
-const PAGES=['home','aimlab','guides','quiz','projects','about','social'];
-const TITLES={home:'RAAD EXE — Gaming • Development • Creation',aimlab:'AIM LAB — RAAD EXE',guides:'Guides — RAAD EXE',quiz:'Quiz — RAAD EXE',projects:'Projets — RAAD EXE',about:'À propos — RAAD EXE',social:'Réseaux — RAAD EXE'};
-function showPage(id){
- if(!PAGES.includes(id))id='home';
- document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));
- document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
- document.title=TITLES[id];
- window.scrollTo({top:0,behavior:'smooth'});
- document.querySelector('.nav').classList.remove('open');
- setTimeout(()=>document.querySelectorAll('.active .reveal').forEach(e=>e.classList.add('show')),80);
-}
-function go(id){if(location.hash.slice(1)===id)showPage(id);else location.hash=id}
-document.querySelectorAll('[data-page]').forEach(e=>e.addEventListener('click',ev=>{ev.preventDefault();go(e.dataset.page)}));
-window.addEventListener('hashchange',()=>showPage(location.hash.slice(1)));
-if(location.hash.slice(1))showPage(location.hash.slice(1));
-$('.menu').onclick=()=>$('.nav').classList.toggle('open');
-document.querySelectorAll('.active .reveal').forEach(e=>e.classList.add('show'));
+              <div class="form-group">
+                <label class="form-label">RAM</label>
+                <select id="ram">
+                  <option value="2">2 Go</option>
+                  <option value="3">3 Go</option>
+                  <option value="4" selected>4 Go</option>
+                  <option value="6">6 Go</option>
+                  <option value="8">8 Go</option>
+                  <option value="12">12 Go</option>
+                  <option value="16">16 Go</option>
+                </select>
+              </div>
 
-const styles={rush:[188,180,174,165,104,192],balanced:[178,170,164,154,98,185],precision:[165,158,151,143,92,175],sniper:[150,142,132,125,110,168]};
-const names=['Général','Point Rouge','2x Scope','4x Scope','Sniper','Caméra libre'];
-const styleNames={rush:'RUSH',balanced:'BALANCED',precision:'PRECISION',sniper:'SNIPER'};
-function generate(){
- let phone=$('#phone').value,ram=+$('#ram').value,hz=+$('#hz').value,style=$('#style').value;
- let dpi=Math.max(200,Math.min(1000,+$('#dpi').value||480)),fire=Math.max(20,Math.min(100,+$('#fire').value||52));
- $('#dpi').value=dpi;$('#fire').value=fire;
- let pa={mid:0,redmi:3,samsung:2,infinix:1,iphone:5,high:6}[phone],ra=ram>=8?2:ram<=3?-3:0,ha=hz>=120?4:hz>=90?2:0;
- let vals=styles[style].map((v,i)=>Math.max(1,Math.min(200,v+pa+ra+ha+(i===0?Math.round((dpi-480)/40):0))));
- $('#sens').innerHTML=vals.map((v,i)=>`<div class="box"><span>${names[i]}</span><strong>${v}</strong></div>`).join('');
- $('#outDpi').textContent=dpi;$('#outFire').textContent=fire+'%';$('#outStyle').textContent=styleNames[style];$('#tag').textContent='GENERATED';
-}
-$('#aimForm').onsubmit=e=>{e.preventDefault();generate()};generate();
-$('#copy').onclick=async()=>{let text='RAAD AIM LAB\n'+[...$$('.box')].map(x=>x.innerText.replace('\n',' : ')).join('\n')+`\nDPI : ${$('#dpi').value}\nBouton de tir : ${$('#fire').value}%\nStyle : ${styleNames[$('#style').value]}`;try{await navigator.clipboard.writeText(text);$('#message').innerHTML='Configuration copiée<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7.5"/></svg>'}catch{$('#message').textContent='Copie automatique indisponible.'}setTimeout(()=>$('#message').textContent='',2200)};
+              <div class="form-group">
+                <label class="form-label">Écran (Hz)</label>
+                <select id="hz">
+                  <option value="60">60 Hz</option>
+                  <option value="90">90 Hz</option>
+                  <option value="120" selected>120 Hz</option>
+                  <option value="144">144 Hz</option>
+                </select>
+              </div>
 
-const qs=[['Quel réglage influence la vitesse générale de visée ?',['Général','Musique','Pseudo','Langue'],0],['Pourquoi tester une configuration plusieurs parties ?',['Changer de compte','Mesurer la régularité','Gagner automatiquement','Augmenter la RAM'],1],['Que signifie DPI ?',['Dots Per Inch','Display Power Input','Drag Point Index','Device Performance Interface'],0],['À quoi sert principalement un HUD ?',['Organiser les commandes','Changer le serveur','Augmenter les FPS par magie','Modifier le pseudo'],0],['Une sensibilité parfaite est-elle universelle ?',['Oui','Non','Seulement iPhone','Seulement 120 Hz'],1],['Quelle méthode facilite les ajustements ?',['Un paramètre à la fois','Tout changer','Ne rien tester','Changer de compte'],0],['Que mesure le Hz ?',['Fréquence de rafraîchissement','RAM','Volume','Stockage'],0],['Le DPI peut-il être adapté au joueur ?',['Oui','Jamais','Seulement Wi-Fi','Seulement sniper'],0],['Quelle approche aide la progression ?',['Régularité et entraînement','Changer à chaque partie','Copier au hasard','Jouer sans pause'],0],['RAAD EXE combine notamment…',['Gaming et web','Cuisine et météo','Transport et sport','Musique et finance'],0]];
-let qi=0,sc=0;
-function renderQ(){if(qi>=qs.length){$('#question').textContent=`Quiz terminé — ${sc}/10`,$('#answers').innerHTML='',$('#start').textContent='Recommencer',$('#qcount').textContent='TERMINÉ',$('#prog').style.width='100%';return}let q=qs[qi];$('#qcount').textContent=`Question ${qi+1} / 10`,$('#prog').style.width=((qi+1)*10)+'%',$('#score').textContent=sc+' pts',$('#question').textContent=q[0],$('#answers').innerHTML=q[1].map((a,i)=>`<button class="answer" data-i="${i}">${a}</button>`).join('');$$('.answer').forEach(b=>b.onclick=()=>{if(b.disabled)return;let ok=+b.dataset.i===q[2];b.classList.add(ok?'correct':'wrong');if(ok)sc++;$$('.answer').forEach(x=>x.disabled=true);setTimeout(()=>{qi++;renderQ()},450)})}
-$('#start').onclick=()=>{if(qi>=qs.length){qi=0;sc=0}$('#start').style.display='none';renderQ()};
-</script>
+              <div class="form-group">
+                <label class="form-label">Tactile (Hz)</label>
+                <select id="touch">
+                  <option value="120">120 Hz</option>
+                  <option value="180">180 Hz</option>
+                  <option value="240">240 Hz</option>
+                  <option value="360" selected>360 Hz</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Style de jeu</label>
+                <select id="playStyle">
+                  <option value="aggressive">Agressif</option>
+                  <option value="balanced" selected>Équilibré</option>
+                  <option value="precision">Précision</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="button primary" id="calculateButton" style="width: 100%; margin-top: 8px;">Calculer</button>
+          </div>
+
+          <!-- Résultats uniquement en bas -->
+          <div class="results-wrapper">
+            <h3 style="margin-bottom: 24px;">Résultats</h3>
+            <div class="results">
+              <div class="result">
+                <div class="result-label">Général</div>
+                <div class="result-value" id="resultGeneral">—</div>
+              </div>
+              <div class="result">
+                <div class="result-label">Point Rouge</div>
+                <div class="result-value" id="resultRedDot">—</div>
+              </div>
+              <div class="result">
+                <div class="result-label">2x Scope</div>
+                <div class="result-value" id="result2x">—</div>
+              </div>
+              <div class="result">
+                <div class="result-label">4x Scope</div>
+                <div class="result-value" id="result4x">—</div>
+              </div>
+              <div class="result">
+                <div class="result-label">Sniper</div>
+                <div class="result-value" id="resultSniper">—</div>
+              </div>
+              <div class="result">
+                <div class="result-label">Libre</div>
+                <div class="result-value" id="resultFree">—</div>
+              </div>
+            </div>
+            <button class="button primary" id="copyResult" style="width: 100%; margin-top: 20px;">Copier</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- PROJETS -->
+    <section class="page" id="page-projets">
+      <section class="section">
+        <div class="section-intro">
+          <span class="section-tag">Créations</span>
+          <h2 class="section-title">Mes Projets</h2>
+          <p class="section-description">
+            Explorez mes créations actuelles et futures.
+          </p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 7v5l3 1"/>
+              </svg>
+            </div>
+            <h3>FF Sensi</h3>
+            <p>Outil interactif pour optimiser votre sensibilité Free Fire selon votre appareil et votre façon de jouer.</p>
+            <button class="button secondary" data-page="ffsensi" style="margin-top: 16px;">Ouvrir</button>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+                <path d="M12 2v20M2 12h20"/>
+              </svg>
+            </div>
+            <h3>À venir</h3>
+            <p>De nouveaux projets sont actuellement en développement. Revenez bientôt pour découvrir ce qui s'en vient.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- À PROPOS -->
+    <section class="page" id="page-apropos">
+      <section class="section">
+        <div class="section-intro">
+          <span class="section-tag">Identité</span>
+          <h2 class="section-title">À propos</h2>
+        </div>
+
+        <div class="card">
+          <p style="font-size: 1.05rem; line-height: 1.9; margin-bottom: 20px;">
+            <strong>RAAD EXE</strong> — Développeur et créateur passionné par le web et le gaming.
+          </p>
+          <p style="color: var(--text-light); line-height: 1.9; margin-bottom: 20px;">
+            Je crée des expériences digitales pensées pour la communauté gaming. Chaque projet est une opportunité d'apprendre, d'expérimenter et de repousser les limites de mes compétences.
+          </p>
+          <p style="color: var(--text-light); line-height: 1.9;">
+            Basé au Mali 🇲🇱, je suis convaincu que la technologie est un outil puissant pour créer, connecter et inspirer.
+          </p>
+
+          <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border);">
+            <h3 style="margin-bottom: 20px;">Réseaux sociaux</h3>
+            <div class="social-links">
+              <a href="https://www.tiktok.com/@raad_exe" class="social-link" title="TikTok">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.6 7.2a5.9 5.9 0 0 1-3.5-1.1v7.1a5.8 5.8 0 1 1-5-5.7v3a2.9 2.9 0 1 0 2 2.7V2h3a5.9 5.9 0 0 0 3.5 2.8v2.4Z"/>
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/@raad_exe" class="social-link" title="YouTube">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2A31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.8V8.2l6.4 3.8-6.4 3.8Z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/raad__exe/" class="social-link" title="Instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="3" y="3" width="18" height="18" rx="5" fill="none"/>
+                  <circle cx="12" cy="12" r="4" fill="none"/>
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/raadexee" class="social-link" title="Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.6 1.7-1.6h1.8V3.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2V10H8v3h2.5v8h3Z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p><strong>© 2026 RAAD EXE</strong></p>
+    <p>Mali 🇲🇱 • Développeur et créateur</p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // Navigation
+    const pages = document.querySelectorAll(".page");
+    const navButtons = document.querySelectorAll(".nav-btn");
+
+    function showPage(pageName) {
+      pages.forEach(p => p.classList.toggle("active", p.id === "page-" + pageName));
+      navButtons.forEach(b => b.classList.toggle("active", b.dataset.page === pageName));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.querySelectorAll("[data-page]").forEach(btn => {
+      btn.addEventListener("click", () => showPage(btn.dataset.page));
+    });
+
+    // Phones
+    const phones = [
+      ["Samsung Galaxy A05", 60, 4, 120],
+      ["Samsung Galaxy A15", 90, 6, 180],
+      ["Samsung Galaxy A16", 90, 6, 240],
+      ["Samsung Galaxy A25", 120, 8, 240],
+      ["Samsung Galaxy A55", 120, 8, 360],
+      ["Samsung Galaxy S23", 120, 8, 360],
+      ["Samsung Galaxy S24", 120, 8, 360],
+      ["iPhone 11", 60, 4, 120],
+      ["iPhone 13", 60, 4, 180],
+      ["iPhone 15", 60, 6, 240],
+      ["iPhone 15 Pro", 120, 8, 240],
+      ["iPhone 16", 60, 8, 240],
+      ["iPhone 16 Pro", 120, 8, 240],
+      ["Xiaomi Redmi Note 13", 120, 6, 240],
+      ["Xiaomi Redmi Note 14", 120, 8, 360],
+      ["POCO X6", 120, 8, 360],
+      ["POCO F6", 120, 12, 480],
+      ["TECNO Spark 30", 120, 8, 240],
+      ["TECNO Camon 40", 120, 8, 360],
+      ["realme 12", 120, 8, 360],
+    ];
+
+    const phoneSearch = document.getElementById("phoneSearch");
+    const phoneResults = document.getElementById("phoneResults");
+    let selectedPhone = null;
+
+    function renderPhones(search = "") {
+      const query = search.toLowerCase();
+      let results = phones.filter(p => p[0].toLowerCase().includes(query)).slice(0, 8);
+      
+      let html = results.map(p => `
+        <div class="phone-result" data-phone="${p[0]}">
+          <div class="phone-name">${p[0]}</div>
+          <div class="phone-info">${p[1]} Hz • ${p[2]} GB • ${p[3]} Hz</div>
+        </div>
+      `).join("");
+
+      phoneResults.innerHTML = html;
+      
+      document.querySelectorAll(".phone-result").forEach(el => {
+        el.addEventListener("click", () => {
+          const phone = phones.find(p => p[0] === el.dataset.phone);
+          selectedPhone = phone;
+          phoneSearch.value = phone[0];
+          document.getElementById("hz").value = phone[1];
+          document.getElementById("ram").value = phone[2];
+          document.getElementById("touch").value = phone[3];
+          phoneResults.innerHTML = "";
+        });
+      });
+    }
+
+    phoneSearch.addEventListener("input", e => {
+      selectedPhone = null;
+      renderPhones(e.target.value);
+    });
+
+    // Calculate
+    let lastResult = null;
+
+    function calculate() {
+      const ram = Number(document.getElementById("ram").value);
+      const hz = Number(document.getElementById("hz").value);
+      const touch = Number(document.getElementById("touch").value);
+      const style = document.getElementById("playStyle").value;
+
+      let base = 165;
+      
+      if (ram <= 3) base += 13;
+      else if (ram <= 4) base += 7;
+      else if (ram >= 8) base -= 2;
+
+      if (hz <= 60) base += 10;
+      else if (hz === 90) base += 5;
+      else if (hz >= 144) base -= 5;
+
+      if (touch <= 120) base += 9;
+      else if (touch >= 360) base -= 4;
+
+      if (style === "aggressive") base += 10;
+      if (style === "precision") base -= 7;
+
+      const general = Math.max(150, Math.min(200, Math.round(base)));
+      const values = [
+        general,
+        Math.max(5, general - 8),
+        Math.max(5, general - 20),
+        Math.max(5, general - 34),
+        Math.max(1, general - 53),
+        Math.max(5, general + 5)
+      ];
+
+      document.getElementById("resultGeneral").textContent = values[0];
+      document.getElementById("resultRedDot").textContent = values[1];
+      document.getElementById("result2x").textContent = values[2];
+      document.getElementById("result4x").textContent = values[3];
+      document.getElementById("resultSniper").textContent = values[4];
+      document.getElementById("resultFree").textContent = values[5];
+
+      lastResult = values;
+    }
+
+    document.getElementById("calculateButton").addEventListener("click", calculate);
+
+    // Copy
+    document.getElementById("copyResult").addEventListener("click", async () => {
+      if (!lastResult) {
+        showToast("Calculez d'abord une configuration");
+        return;
+      }
+
+      const text = `FF Sensi\n\nGénéral: ${lastResult[0]}\nPoint Rouge: ${lastResult[1]}\n2x: ${lastResult[2]}\n4x: ${lastResult[3]}\nSniper: ${lastResult[4]}\nLibre: ${lastResult[5]}`;
+
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("Configuration copiée");
+      } catch {
+        showToast("Erreur de copie");
+      }
+    });
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2400);
+    }
+  </script>
+
 </body>
-                                                                                                                                                                                                                                              </html>
+         </html>
